@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
-import type { Song } from "../type/artist";
+import type { Song } from "../../type/artist";
 
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { convertTime } from "@/lib/utils";
 
 export default function Artist({
   song,
   heroColor,
 }: {
   song: Song;
-  heroColor: string;
+  heroColor?: string;
 }) {
   return (
     <Tooltip>
       <TooltipTrigger>
         <Link
-          to={`/artists/${song.id}`}
+          to={`/songs/${song.id}`}
           className="flex flex-col gap-4 h-full border rounded-3xl p-2.5 bg-black hover:ring-4 ring-white/50"
         >
           <img
@@ -29,7 +30,7 @@ export default function Artist({
         </Link>
       </TooltipTrigger>
       <TooltipContent className="border-3" style={{ borderColor: heroColor }}>
-        {song.durationSec}
+        {convertTime(song.durationSec)}
       </TooltipContent>
     </Tooltip>
   );

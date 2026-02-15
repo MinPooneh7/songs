@@ -23,4 +23,5 @@ export interface Song {
   previewUrl: string;
   createdAt: Date;
   updatedAt: Date;
+  artist: Artist;
 }

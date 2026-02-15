@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/home";
 import ArtistPage from "./pages/artist";
 import { TooltipProvider } from "./components/ui/tooltip";
+import SongDetails from "./pages/song";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/artists/:artistId",
     element: <ArtistPage />,
+  },
+  {
+    path: "/songs/:songId",
+    element: <SongDetails />,
   },
 ]);
 
