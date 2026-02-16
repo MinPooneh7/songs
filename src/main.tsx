@@ -9,6 +9,8 @@ import { TooltipProvider } from "./components/ui/tooltip";
 import SongDetails from "./pages/song";
 import { PlayerFullSyncProvider } from "@splicemood/react-music-player";
 
+import Login from "./pages/login";
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/songs/:songId",
     element: <SongDetails />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

@@ -1,22 +1,88 @@
-import { useQuery } from "@tanstack/react-query";
+import { login } from "@/api/auth/login";
+import { useMutation } from "@tanstack/react-query";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Login(){
- const [inputValue, setInputValue] = useState("");
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { isPending, error, data, refetch } = useQuery({
-    queryKey: ["login"],
-    queryFn: () => findAllTodos(),
-  });
-
+  const onEmailSet = (
+    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    setEmail(e.target.value);
+  };
+  const onPasswordSet = (
+    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) => {
+    setPassword(e.target.value);
+  };
+  const navigate = useNavigate();
   const { mutate } = useMutation({
-    mutationFn: (data: TodoCreate) => createTodo(data),
+    mutationFn: () =>
+      login({
+        email,
+        password,
+      }),
     onSuccess: () => {
-      setInputValue("");
-      refetch();
+      navigate("/");
+    },
+    onError: () => {
+      setError(true);
     },
   });
 
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate();
+  };
+  const [error, setError] = useState(false);
 
+  const [show, setShow] = useState(false);
 
+  const onShowClick = () => setShow((prev) => !prev);
+
+  return (
+    <div className="flex flex-col justify-center items-center gap-2 bg-linear-to-r from-purple-500 to-blue-400 w-screen h-screen">
+      <form
+        className="flex flex-col gap-5 items-center text-4xl bg-white rounded-4xl p-7"
+        onSubmit={handleSubmit}
+      >
+        <div className="text-7xl text-black font-bold">LoginPage</div>
+        <div className="flex flex-col gap-1.5 text-black w-full mt-7">
+          Email:
+          <input
+            className="border-b focus:outline-0 placeholder:text-gray-500 text-lg"
+            placeholder="Enter your email"
+            value={email}
+            onChange={onEmailSet}
+          />
+        </div>
+        <div className="flex flex-col gap-1.5 text-black w-full">
+          Password:
+          <div className="w-full relative">
+            <input
+              className="border-b  focus:outline-0 placeholder:text-gray-500 text-lg w-full"
+              placeholder="Enter your password"
+              value={password}
+              onChange={onPasswordSet}
+              type={show ? "text" : "password"}
+            />
+            <button
+              className="absolute right-0 top-1/3 text-gray-500"
+              onClick={onShowClick}
+            >
+              {show ? <Eye /> : <EyeOff />}
+            </button>
+          </div>
+        </div>
+        <button className="border rounded-4xl text-white px-7 p-2.5 w-full bg-linear-to-l from-purple-500 to-blue-400">
+          Log in
+        </button>
+        {error && <span className="text-xl text-red-600">"Incorrect email or password"</span>}
+        <div className="text-sm text-black">Don't have an account signup</div>
+      </form>
+    </div>
+  );
 }

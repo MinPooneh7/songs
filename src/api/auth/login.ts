@@ -8,5 +8,5 @@ export async function login(payload: Payload) {
 
 interface Payload {
   email: string;
-  passwode: string;
+  password: string;
 }
