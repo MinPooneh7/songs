@@ -7,6 +7,7 @@ import Home from "./pages/home";
 import ArtistPage from "./pages/artist";
 import { TooltipProvider } from "./components/ui/tooltip";
 import SongDetails from "./pages/song";
+import { PlayerFullSyncProvider } from "@splicemood/react-music-player";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +29,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <RouterProvider router={router} />
-      </TooltipProvider>
+      <PlayerFullSyncProvider>
+        <TooltipProvider>
+          <RouterProvider router={router} />
+        </TooltipProvider>
+      </PlayerFullSyncProvider>
     </QueryClientProvider>
   </StrictMode>,
 );
