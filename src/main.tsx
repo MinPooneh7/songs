@@ -11,6 +11,8 @@ import { PlayerFullSyncProvider } from "@splicemood/react-music-player";
 
 import Login from "./pages/login";
 import SignUp from "./pages/sign-up";
+import Auth from "./components/auth";
+import UserPage from "./pages/user";
 
 const queryClient = new QueryClient();
 
@@ -35,16 +37,22 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp />,
   },
+  {
+    path: "/user",
+    element: <UserPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <PlayerFullSyncProvider>
-        <TooltipProvider>
-          <RouterProvider router={router} />
-        </TooltipProvider>
-      </PlayerFullSyncProvider>
+      <Auth>
+        <PlayerFullSyncProvider>
+          <TooltipProvider>
+            <RouterProvider router={router} />
+          </TooltipProvider>
+        </PlayerFullSyncProvider>
+      </Auth>
     </QueryClientProvider>
   </StrictMode>,
 );

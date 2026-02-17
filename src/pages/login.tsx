@@ -72,6 +72,7 @@ export default function Login() {
             <button
               className="absolute right-0 top-1/3 text-gray-500"
               onClick={onShowClick}
+              type="button"
             >
               {show ? <Eye /> : <EyeOff />}
             </button>
@@ -85,7 +86,12 @@ export default function Login() {
             "Incorrect email or password"
           </span>
         )}
-        <div className="text-sm text-black">Don't have an account <Link className="text-purple-900 underline" to={"/signup"}>Sign up</Link></div>
+        <div className="text-sm text-black">
+          Don't have an account{" "}
+          <Link className="text-purple-900 underline" to={"/signup"}>
+            Sign up
+          </Link>
+        </div>
       </form>
     </div>
   );

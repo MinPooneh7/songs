@@ -108,8 +108,9 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
     const tryPlay = async () => {
       try {
         await audio.play();
-      } catch (err) {
+      } catch (err: unknown) {
         setIsPlaying(false);
+        console.error(err);
       }
     };
 
@@ -118,7 +119,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-2.5 w-full max-w-md p-4 bg-gray-600 rounded-xl shadow-lg text-white ${className}`}
+      className={`flex flex-col gap-2.5 p-4 bg-gray-600 rounded-xl shadow-lg text-white w-full ${className}`}
     >
       <audio ref={audioRef} src={audioSrc} autoPlay />
       <div className="flex gap-2">
