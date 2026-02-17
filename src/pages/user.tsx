@@ -1,8 +1,8 @@
 import useStore from "@/store/use-store";
-import Profile from "@/assets/profile.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import ThemePicker from "@/components/theme-picker";
+import SettingsAvatar from "@/components/settings-avatar";
 
 export default function UserPage() {
   const user = useStore((state) => state.user);
@@ -15,10 +15,7 @@ export default function UserPage() {
     <div className="bg-linear-to-t from-gray-950 to-gray-600 w-screen h-screen flex gap-4">
       <div className="flex flex-col gap-9 p-7 items-start w-full">
         <div className="flex gap-9 items-center">
-          <img
-            src={user?.avatar || Profile}
-            className="border rounded-full w-50 h-50"
-          />
+          <SettingsAvatar />
           <div className="flex flex-col">
             <div className="text-white font-bold text-4xl">
               {user?.username}
