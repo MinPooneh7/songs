@@ -45,13 +45,13 @@
 
 .pink {
   --primary: #f52099;
-  --primary: #e687bd;
+  --secondary: #e687bd;
   --text: #000;
 }
 
-.yellow {
-  --primary: #e7f702;
-  --secondary: #d4e349;
+.orange {
+  --primary: #fc942b;
+  --secondary: #f5b576;
   --text: #000;
 }
 

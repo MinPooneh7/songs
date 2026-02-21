@@ -25,7 +25,7 @@ export default function ArtistPage() {
                 <div className="text-6xl"> {data.name}</div>
                 <div className="text-xl text-nowrap"> {data.activeYears} </div>
               </div>
-              <div className="leading-loose text-lg">{data.description}</div>
+              <div className="leading-loose text-lg text-text">{data.description}</div>
             </div>
           </div>
           <div className="gap-2 grid grid-cols-1 lg:grid-cols-5">

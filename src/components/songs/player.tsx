@@ -119,7 +119,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
   return (
     <div
-      className={`flex flex-col gap-2.5 p-4 bg-linear-to-r from-primary to-secondary rounded-xl shadow-lg text-white w-full ${className}`}
+      className={`flex flex-col gap-2.5 p-4 bg-linear-to-r from-secondary to-primary rounded-xl shadow-lg text-white w-full ${className}`}
     >
       <audio ref={audioRef} src={audioSrc} autoPlay />
       <div className="flex gap-2">
