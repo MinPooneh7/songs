@@ -1,4 +1,5 @@
 import { signup } from "@/api/auth/signup";
+import useStore from "@/store/use-store";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
@@ -9,6 +10,8 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+
+  const setUser = useStore((state) => state.setUser);
 
   const onEmailSet = (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
@@ -33,7 +36,8 @@ export default function SignUp() {
         username,
         password,
       }),
-    onSuccess: () => {
+    onSuccess: (user) => {
+      setUser(user);
       navigate("/");
     },
   });
