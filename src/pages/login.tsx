@@ -40,7 +40,7 @@ export default function Login() {
   const onShowClick = () => setShow((prev) => !prev);
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 bg-linear-to-r from-purple-500 to-blue-400 w-screen h-screen">
+    <div className="flex flex-col justify-center items-center gap-2 bg-linear-to-r from-[#4d276b] to-[#fc4747] w-screen h-screen">
       <form
         className="flex flex-col gap-5 items-center text-4xl bg-white rounded-4xl px-7 py-11 w-120"
         onSubmit={handleSubmit}
@@ -78,7 +78,7 @@ export default function Login() {
             </button>
           </div>
         </div>
-        <button className="border rounded-4xl text-white px-7 p-2.5 w-full bg-linear-to-l from-purple-500 to-blue-400">
+        <button className="border rounded-4xl text-white px-7 p-2.5 w-full bg-linear-to-l from-[#4d276b] to-[#fc4747]">
           Log in
         </button>
         {error && (

@@ -9,10 +9,13 @@ import { TooltipProvider } from "./components/ui/tooltip";
 import SongDetails from "./pages/song";
 import { PlayerFullSyncProvider } from "@splicemood/react-music-player";
 
+import { ThemeProvider } from "next-themes";
+
 import Login from "./pages/login";
 import SignUp from "./pages/sign-up";
 import Auth from "./components/auth";
 import UserPage from "./pages/user";
+import { THEMES } from "./components/theme-picker";
 
 const queryClient = new QueryClient();
 
@@ -45,14 +48,21 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Auth>
-        <PlayerFullSyncProvider>
-          <TooltipProvider>
-            <RouterProvider router={router} />
-          </TooltipProvider>
-        </PlayerFullSyncProvider>
-      </Auth>
-    </QueryClientProvider>
+    <ThemeProvider
+      themes={THEMES}
+      attribute={"class"}
+      enableSystem={false}
+      defaultTheme={"base"}
+    >
+      <QueryClientProvider client={queryClient}>
+        <Auth>
+          <PlayerFullSyncProvider>
+            <TooltipProvider>
+              <RouterProvider router={router} />
+            </TooltipProvider>
+          </PlayerFullSyncProvider>
+        </Auth>
+      </QueryClientProvider>
+    </ThemeProvider>
   </StrictMode>,
 );

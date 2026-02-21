@@ -11,17 +11,19 @@ export default function Home() {
   });
 
   return (
-    <div className="flex flex-col bg-gray-500 items-end p-4">
-      <Header />
-      {data && (
-        <div className="grid gap-2 grid-cols-1 lg:grid-cols-3 p-2 bg-gray-500">
-          {data.map((artist) => (
-            <Artist artist={artist} key={artist.id} />
-          ))}
-        </div>
-      )}
-      {isPending && <span>loading...</span>}
-      {error && <span>Something went wrong!</span>}
+    <div className="flex flex-col bg-linear-to-r from-primary to-secondary overflow-auto">
+      <div className="flex flex-col gap-4 w-screen h-screen items-end p-5">
+        <Header />
+        {data && (
+          <div className="grid gap-5 grid-cols-1 lg:grid-cols-3 p-2">
+            {data.map((artist) => (
+              <Artist artist={artist} key={artist.id} />
+            ))}
+          </div>
+        )}
+        {isPending && <span>loading...</span>}
+        {error && <span>Something went wrong!</span>}
+      </div>
     </div>
   );
 }

@@ -13,10 +13,10 @@ export default function SongDetails() {
   });
 
   return (
-    <div className="bg-gray-600 h-screen overflow-auto">
+    <div className="bg-linear-to-r from-primary to-secondary h-screen overflow-auto">
       {data && (
         <div className="flex flex-col gap-4 items-center p-7">
-          <div className="text-white text-xl">{data.artist.shortBio}</div>
+          <div className="text-text text-xl">{data.artist.shortBio}</div>
           <div className="flex flex-col gap-2 p-9 rounded-xl border bg-white">
             <div className="flex flex-col">
               <img

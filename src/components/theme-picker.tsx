@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import { useTheme } from "next-themes";
+
+const themeColors = {
+  base: "#000",
+  green: "#0f0",
+  blue: "#00f",
+  red:"#f00",
+  yellow: "#ff0",
+  pink:"#faa",
+  purple:"#961d80"
+};
+
+export const THEMES = Object.keys(themeColors);
 
 export default function ThemePicker() {
+  const { setTheme } = useTheme();
+
   return (
     <div className="flex flex-col items-end">
       <div className="w-110 h-15 py-2 ">
@@ -8,54 +22,17 @@ export default function ThemePicker() {
           Themes
         </span>
       </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-red-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-red-600 "
-        >
-          Red
-        </Link>
-      </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-blue-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-blue-600"
-        >
-          Blue
-        </Link>
-      </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-green-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-green-600"
-        >
-          Green
-        </Link>
-      </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-yellow-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-yellow-600"
-        >
-          Yellow
-        </Link>
-      </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-pink-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-pink-600"
-        >
-          Pink
-        </Link>
-      </div>
-      <div className="border-2 w-110 h-15 py-2 hover:bg-purple-300">
-        <Link
-          to={""}
-          className="flex font-bold items-center justify-center text-4xl text-purple-600"
-        >
-          Purple
-        </Link>
-      </div>
+      {THEMES.map((theme, index) => (
+        <div className="border-2 w-110 h-15 py-2 border-primary" key={index}>
+          <button
+            className="flex font-bold items-center justify-center text-4xl"
+            style={{ color: themeColors[theme as keyof typeof themeColors] }}
+            onClick={() => setTheme(theme)}
+          >
+            {theme}
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

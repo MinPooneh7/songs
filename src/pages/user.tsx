@@ -12,8 +12,8 @@ export default function UserPage() {
     if (!user) navigate("/login");
   }, [user, navigate]);
   return (
-    <div className="bg-linear-to-t from-gray-950 to-gray-600 w-screen h-screen flex gap-4">
-      <div className="flex flex-col gap-9 p-7 items-start w-full">
+    <div className="bg-linear-to-r from-primary to-secondary w-screen h-screen flex gap-4">
+      <div className="max-w-3xl mx-auto bg-white rounded-2xl flex flex-col gap-9 p-7 items-start w-full">
         <div className="flex gap-9 items-center">
           <SettingsAvatar />
           <div className="flex flex-col">
