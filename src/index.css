@@ -15,6 +15,28 @@
   --color-secondary: var(--secondary);
   --color-primary-muted: var(--primary-muted);
   --color-text: var(--text);
+
+  --animate-quiet: quiet 1.2s ease-in-out infinite;
+  --animate-normal: normal 1.2s ease-in-out infinite;
+  --animate-loud: loud 1.2s ease-in-out infinite;
+
+  @keyframes quiet {
+    25% { transform: scaleY(.6); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(.8); }
+  }
+
+  @keyframes normal {
+    25% { transform: scaleY(1); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(.6); }
+  }
+
+  @keyframes loud {
+    25% { transform: scaleY(1); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(1.2); }
+  }
 }
 
 

@@ -16,6 +16,7 @@ import SignUp from "./pages/sign-up";
 import Auth from "./components/auth";
 import UserPage from "./pages/user";
 import { THEMES } from "./components/theme-picker";
+import Likes from "./pages/like";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
     path: "/user",
     element: <UserPage />,
   },
+  {
+    path: "/likes",
+    element :<Likes />
+  }
 ]);
 
 createRoot(document.getElementById("root")!).render(

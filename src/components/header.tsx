@@ -2,6 +2,7 @@ import useStore from "@/store/use-store";
 import Profile from "@/assets/profile.jpg";
 import { Link } from "react-router-dom";
 import Search from "./search";
+import AudioVisualizer from "./sound-wave";
 
 export default function Header() {
   const user = useStore((state) => state.user);
@@ -26,7 +27,9 @@ export default function Header() {
         </div>
       )}
       <Search />
-      <div className="w-full"></div>
+      <div className="w-full flex justify-end items-center pr-3 pb-3">
+        <AudioVisualizer />
+      </div>
     </div>
   );
 }

@@ -26,4 +26,10 @@ export interface Song {
   artist: Artist;
   prevSongId: string | null;
   nextSongId: string | null;
+  isLiked?: boolean;
+}
+
+export interface Like {
+  id: string;
+  song: Song;
 }

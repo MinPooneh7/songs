@@ -7,10 +7,14 @@ import { useParams } from "react-router-dom";
 export default function SongDetails() {
   const { songId, playlistId } = useParams();
 
-  const { isPending, error, data } = useQuery({
+  const { isPending, error, data, refetch } = useQuery({
     queryKey: ["song", songId],
-    queryFn: () => getSong(songId!),
+    queryFn: () => getSong(songId!, playlistId),
   });
+
+  const onSongLikeSuccess = () => {
+    refetch();
+  };
 
   return (
     <div className="bg-linear-to-r from-primary to-secondary h-screen overflow-auto">
@@ -29,11 +33,10 @@ export default function SongDetails() {
 
             <div className="flex flex-co">
               <MusicPlayer
-                prev={data.prevSongId}
-                next={data.nextSongId}
-                audioSrc={data.previewUrl}
+                song={data}
                 key={songId}
-                id={songId!}
+                playlistId={playlistId}
+                onLikeSuccess={onSongLikeSuccess}
               />
             </div>
           </div>

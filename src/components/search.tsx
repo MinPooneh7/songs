@@ -29,7 +29,7 @@ export default function Search() {
         onChange={handleChange}
       />
       {data && (
-        <div className="absolute z-100 flex flex-col py-2 bg-primary rounded-3xl px-2">
+        <div className="absolute z-100 flex flex-col py-2 bg-primary w-full rounded-3xl px-2">
           {data.results.map((song) => (
             <SearchResult song={song} key={song.id} />
           ))}
