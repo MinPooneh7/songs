@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 export default function SongDetails() {
-  const { songId } = useParams();
+  const { songId, playlistId } = useParams();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["song", songId],
@@ -33,6 +33,7 @@ export default function SongDetails() {
                 next={data.nextSongId}
                 audioSrc={data.previewUrl}
                 key={songId}
+                id={songId!}
               />
             </div>
           </div>

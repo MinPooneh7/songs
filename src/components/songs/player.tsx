@@ -15,6 +15,7 @@ interface MusicPlayerProps {
   className?: string;
   next: string | null;
   prev: string | null;
+  id: string;
 }
 
 const MusicPlayer: React.FC<MusicPlayerProps> = ({
@@ -22,6 +23,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
   next,
   prev,
   className,
+  id,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -161,7 +163,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
       </div>
       {/* Controls */}
       <div className="flex w-full justify-between items-center">
-        <Add />
+        <Add songId={id} />
         <div className="flex justify-center items-center gap-4 mb-3 w-full">
           <button
             onClick={onPrev}
