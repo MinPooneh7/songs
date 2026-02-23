@@ -14,10 +14,12 @@ export default function Auth({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
+    // when user is logged in
     if (data) setUser(data);
   }, [data, setUser]);
 
   useEffect(() => {
+    // when user is not logged in
     if (error) setUser(null);
   }, [error, setUser]);
 

@@ -7,7 +7,6 @@ import HomePage from "./pages/home";
 import ArtistPage from "./pages/artist";
 import { TooltipProvider } from "./components/ui/tooltip";
 import SongDetailsPage from "./pages/song";
-import { PlayerFullSyncProvider } from "@splicemood/react-music-player";
 
 import { ThemeProvider } from "next-themes";
 
@@ -65,11 +64,9 @@ createRoot(document.getElementById("root")!).render(
     >
       <QueryClientProvider client={queryClient}>
         <Auth>
-          <PlayerFullSyncProvider>
-            <TooltipProvider>
-              <RouterProvider router={router} />
-            </TooltipProvider>
-          </PlayerFullSyncProvider>
+          <TooltipProvider>
+            <RouterProvider router={router} />
+          </TooltipProvider>
         </Auth>
       </QueryClientProvider>
     </ThemeProvider>

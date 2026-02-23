@@ -49,7 +49,7 @@ export default function SignUpPage() {
 
   const [show, setShow] = useState(false);
 
-  const onShowClick = () => setShow((prev) => !prev);
+  const onShowClick = () => setShow(!show);
 
   return (
     <div className="flex flex-col justify-center items-center gap-2 bg-linear-to-r from-[#4d276b] to-[#fc4747] w-screen h-screen">
